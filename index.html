@@ -2068,6 +2068,79 @@
     </button>
     <!-- END AUDIO -->
 
+    <!-- RSVP -->
+<section id="rsvp" style="width:100%; padding:60px 12px; font-family: Arial, sans-serif;">
+  <div style="max-width: 520px; margin: 0 auto;">
+    <h2 style="text-align:center; font-size:24px; font-weight:500; margin:0 0 10px;">
+      Просим подтвердить ваше присутствие
+    </h2>
+    <p style="text-align:center; margin:0 0 26px; opacity:.75;">
+      Пожалуйста, ответьте до <b>5 июля 2025</b>
+    </p>
+
+    <form id="rsvpForm" style="background:#fff; border-radius:18px; padding:22px; box-shadow: 0 12px 40px rgba(0,0,0,.08);">
+      <!-- Имя -->
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:14px; margin-bottom:8px;">Ваше имя и фамилия</label>
+        <input
+          name="fullName"
+          type="text"
+          placeholder="Иван Иванов"
+          required
+          style="width:100%; border:none; border-bottom:1px solid rgba(0,0,0,.18); padding:12px 4px; font-size:16px; outline:none;"
+        />
+      </div>
+
+      <!-- Присутствие -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:14px; margin-bottom:10px;">Получится ли у вас присутствовать?</div>
+
+        <label style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <input type="radio" name="attend" value="Да" required />
+          Да
+        </label>
+
+        <label style="display:flex; align-items:center; gap:10px;">
+          <input type="radio" name="attend" value="Нет" required />
+          Нет
+        </label>
+      </div>
+
+      <!-- Сколько будет -->
+      <div style="margin-bottom:18px;">
+        <label style="display:block; font-size:14px; margin-bottom:8px;">
+          Сколько человек будет с вами? (в цифрах)
+        </label>
+
+        <input
+          name="guestsCount"
+          type="number"
+          min="0"
+          max="20"
+          value="0"
+          required
+          style="width:100%; border:none; border-bottom:1px solid rgba(0,0,0,.18); padding:12px 4px; font-size:16px; outline:none;"
+        />
+
+        <div style="margin-top:6px; font-size:12px; opacity:.65;">
+          0 — если вы один/одна, 1 — если придёте вдвоём, и т.д.
+        </div>
+      </div>
+
+      <button
+        id="rsvpSubmit"
+        type="submit"
+        style="width:100%; padding:14px 16px; border-radius:999px; border:1px solid #111; background:transparent; cursor:pointer; text-transform:uppercase; letter-spacing:.08em;"
+      >
+        Отправить
+      </button>
+
+      <p id="rsvpStatus" style="text-align:center; margin:14px 0 0; font-size:14px;"></p>
+    </form>
+  </div>
+</section>
+<!-- END RSVP -->
+
     
 	<!-- Question -->
 
@@ -2285,8 +2358,37 @@
 		
 	  </section>
 
+    <!-- RSVP SCRIPT -->
 
-	
+    <script>
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxWUc-XUTHiSmgFCQGO2DQ2gXQyWD1QvWnAXNDcDjSUCoRhQvYr3lVgL_SJizqx9O7/exec";
+    
+      const rsvpForm = document.getElementById("rsvpForm");
+      const rsvpStatus = document.getElementById("rsvpStatus");
+    
+      rsvpForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        rsvpStatus.textContent = "Отправляем...";
+    
+        const params = new URLSearchParams(new FormData(rsvpForm)).toString();
+        const url = `${SCRIPT_URL}?${params}`;
+    
+        // GET без CORS боли
+        fetch(url, { method: "GET", mode: "no-cors" })
+          .then(() => {
+            rsvpStatus.textContent = "Спасибо! Ответ принят ✅";
+            rsvpForm.reset();
+          })
+          .catch(() => {
+            rsvpStatus.textContent = "Не удалось отправить.";
+          });
+      });
+    </script>
+    
+    
+    <!-- END RSVP SCRIPT-->
+
+    
 	  
 	  <script>
 		// only one open at a time (like your React version)
