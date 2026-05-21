@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Nitro\\\\Documents\\\\Nurlan&&Jumaiym\" -Recurse)",
+      "Bash(Select-Object FullName)",
+      "PowerShell(head *)",
+      "PowerShell(tail *)",
+      "Bash(Get-Content \"C:\\\\Users\\\\Nitro\\\\Documents\\\\Nurlan&&Jumaiym\\\\index.html\")",
+      "Bash(Measure-Object -Line)",
+      "Bash(python3 -c ' *)",
+      "Bash(python *)",
+      "Bash(node *)"
+    ]
+  }
+}
