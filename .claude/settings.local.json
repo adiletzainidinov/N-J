@@ -9,7 +9,12 @@
       "Bash(Measure-Object -Line)",
       "Bash(python3 -c ' *)",
       "Bash(python *)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "Bash(find wp-content/audio -type f)",
+      "Bash(cat .gitignore)",
+      "Bash(git lfs *)",
+      "Bash(git rm *)",
+      "Bash(git add *)"
     ]
   }
 }
