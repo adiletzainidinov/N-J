@@ -1135,6 +1135,227 @@
       }
     </style>
 
+    <!-- ======== ADMIN GENERATOR (visible only with ?admin=1) ======== -->
+    <style>
+      .admin-generator {
+        display: none;
+        background: #f7f1e8;
+        padding: 64px 24px 72px;
+      }
+      .admin-generator-card {
+        max-width: 760px;
+        margin: 0 auto;
+        background: #faf7f2;
+        border: 1px solid rgba(184,148,58,0.35);
+        border-radius: 24px;
+        padding: 52px 56px;
+        box-shadow: 0 6px 48px rgba(184,148,58,0.10), 0 1px 6px rgba(0,0,0,0.06);
+      }
+      .admin-generator-kicker {
+        font-family: 'Georgia', serif;
+        font-size: 11px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #B8943A;
+        margin: 0 0 14px;
+      }
+      .admin-generator-title {
+        font-family: 'Cormorant Garamond', 'Noto Serif Display', serif;
+        font-size: clamp(26px, 4vw, 38px);
+        font-weight: 400;
+        color: #1F1810;
+        margin: 0 0 14px;
+        line-height: 1.2;
+      }
+      .admin-generator-text {
+        font-family: 'Georgia', serif;
+        font-size: 15px;
+        color: #6b4c2e;
+        line-height: 1.75;
+        margin: 0 0 28px;
+        font-style: italic;
+      }
+      .admin-chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+      .admin-chip {
+        background: transparent;
+        border: 1px solid rgba(184,148,58,0.45);
+        border-radius: 50px;
+        padding: 6px 16px;
+        font-family: 'Georgia', serif;
+        font-size: 13px;
+        color: #8B5C28;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        letter-spacing: 0.02em;
+      }
+      .admin-chip:hover {
+        background: rgba(184,148,58,0.12);
+        color: #B8943A;
+        border-color: #B8943A;
+      }
+      .admin-generator-form {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 0;
+      }
+      .admin-generator-input {
+        flex: 1;
+        padding: 14px 18px;
+        border: 1px solid #D4B97A;
+        border-radius: 12px;
+        font-family: 'Georgia', serif;
+        font-size: 15px;
+        color: #1F1810;
+        background: #fffdf8;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .admin-generator-input:focus {
+        border-color: #B8943A;
+        box-shadow: 0 0 0 3px rgba(184,148,58,0.13);
+      }
+      .admin-generator-button {
+        padding: 14px 30px;
+        background: linear-gradient(135deg, #B8943A 0%, #8B5C28 100%);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-family: 'Georgia', serif;
+        font-size: 15px;
+        letter-spacing: 0.07em;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: opacity 0.2s, transform 0.2s;
+        box-shadow: 0 4px 20px rgba(184,148,58,0.3);
+      }
+      .admin-generator-button:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      .admin-generator-result {
+        display: none;
+        margin-top: 24px;
+        background: #f0e8d8;
+        border: 1px solid rgba(184,148,58,0.4);
+        border-radius: 14px;
+        padding: 22px 26px;
+      }
+      .admin-result-label {
+        font-family: 'Georgia', serif;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #B8943A;
+        margin: 0 0 10px;
+      }
+      #adminResultUrl {
+        font-family: monospace;
+        font-size: 14px;
+        color: #2c1e0c;
+        word-break: break-all;
+        line-height: 1.65;
+        background: #fffdf8;
+        border: 1px solid #D4B97A;
+        border-radius: 8px;
+        padding: 11px 15px;
+        margin-bottom: 18px;
+      }
+      .admin-result-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .admin-copy-button {
+        padding: 11px 24px;
+        background: linear-gradient(135deg, #B8943A 0%, #8B5C28 100%);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Georgia', serif;
+        font-size: 13px;
+        cursor: pointer;
+        letter-spacing: 0.05em;
+        transition: opacity 0.2s;
+        box-shadow: 0 3px 12px rgba(184,148,58,0.25);
+      }
+      .admin-copy-button:hover { opacity: 0.9; }
+      .admin-preview-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 11px 22px;
+        background: transparent;
+        color: #8B5C28;
+        border: 1px solid rgba(184,148,58,0.5);
+        border-radius: 8px;
+        font-family: 'Georgia', serif;
+        font-size: 13px;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: background 0.2s, color 0.2s;
+      }
+      .admin-preview-link:hover {
+        background: rgba(184,148,58,0.09);
+        color: #B8943A;
+      }
+      @media (max-width: 620px) {
+        .admin-generator { padding: 32px 16px 44px; }
+        .admin-generator-card { padding: 28px 20px; border-radius: 16px; }
+        .admin-generator-form { flex-direction: column; }
+        .admin-generator-button { width: 100%; }
+        .admin-result-actions { flex-direction: column; }
+        .admin-copy-button,
+        .admin-preview-link { width: 100%; justify-content: center; text-align: center; }
+      }
+    </style>
+
+    <section id="adminGenerator" class="admin-generator">
+      <div class="admin-generator-card">
+        <p class="admin-generator-kicker">✦ жеке чакыруу ✦</p>
+        <h2 class="admin-generator-title">Генератор индивидуальных приглашений</h2>
+        <p class="admin-generator-text">
+          Конок атын жазыңыз же бир нече ат — сайт жеке шилтеме жаратат.<br>
+          Ар бир конок өзүнүн атына ылайыкталган чакырууну алат.
+        </p>
+
+        <div class="admin-chip-list">
+          <button type="button" class="admin-chip" data-name="Азамат">Азамат</button>
+          <button type="button" class="admin-chip" data-name="Азамат жана Айдана">Азамат жана Айдана</button>
+          <button type="button" class="admin-chip" data-name="Урматтуу ата-апа">Урматтуу ата-апа</button>
+          <button type="button" class="admin-chip" data-name="Нурлан байке">Нурлан байке</button>
+        </div>
+
+        <div class="admin-generator-form">
+          <input
+            id="adminNameInput"
+            class="admin-generator-input"
+            type="text"
+            placeholder="Мисал: Азамат жана Айдана"
+            autocomplete="off"
+          />
+          <button id="adminGenerateBtn" class="admin-generator-button">Шилтеме жарат</button>
+        </div>
+
+        <div id="adminResultWrap" class="admin-generator-result">
+          <p class="admin-result-label">Даяр шилтеме</p>
+          <div id="adminResultUrl"></div>
+          <div class="admin-result-actions">
+            <button id="adminCopyBtn" class="admin-copy-button">Шилтемени көчүрүү</button>
+            <a id="adminPreviewLink" class="admin-preview-link" target="_blank" rel="noopener noreferrer">
+              Текшерүү үчүн ачуу ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== END ADMIN GENERATOR ====== -->
+
     <!-- HEADER -->
     <header>
       <section id="banner" class="bg_overlay" style="height: 850px">
@@ -2626,154 +2847,80 @@
       data-wp-strategy="async"
     ></script>
 
-    <!-- ADMIN LINK GENERATOR (visible only with ?admin=1) -->
-    <div id="adminGenerator" style="
-      display: none;
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 9999;
-      background: #FAF7F2;
-      border: 1.5px solid #B8943A;
-      border-radius: 14px;
-      padding: 24px 28px;
-      box-shadow: 0 8px 40px rgba(184,148,58,0.18), 0 2px 12px rgba(0,0,0,0.10);
-      max-width: 340px;
-      width: calc(100vw - 48px);
-      font-family: 'Georgia', serif;
-    ">
-      <p style="
-        font-size: 11px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: #B8943A;
-        margin: 0 0 10px;
-      ">✦ Генератор шилтемеси ✦</p>
-      <p style="font-size: 13px; color: #4a3520; margin: 0 0 14px; font-style: italic; line-height: 1.5;">
-        Конок атын жазыңыз — жеке шилтеме жаратылат
-      </p>
-      <input
-        id="adminNameInput"
-        type="text"
-        placeholder="Мисал: Азамат жана Айдана"
-        style="
-          width: 100%;
-          box-sizing: border-box;
-          padding: 10px 14px;
-          border: 1px solid #D4B97A;
-          border-radius: 8px;
-          font-family: 'Georgia', serif;
-          font-size: 15px;
-          color: #1F1810;
-          background: #FFFDF8;
-          margin-bottom: 12px;
-          outline: none;
-        "
-      />
-      <button
-        id="adminGenerateBtn"
-        style="
-          width: 100%;
-          padding: 10px 0;
-          background: linear-gradient(135deg, #B8943A 0%, #D4B97A 100%);
-          color: #fff;
-          border: none;
-          border-radius: 8px;
-          font-family: 'Georgia', serif;
-          font-size: 15px;
-          letter-spacing: 0.06em;
-          cursor: pointer;
-          margin-bottom: 14px;
-        "
-      >Шилтеме жарат</button>
-      <div
-        id="adminResultUrl"
-        style="
-          display: none;
-          word-break: break-all;
-          font-size: 12px;
-          color: #4a3520;
-          background: #F0E8D8;
-          border: 1px solid #D4B97A;
-          border-radius: 8px;
-          padding: 10px 14px;
-          margin-bottom: 10px;
-          font-family: monospace;
-          line-height: 1.6;
-        "
-      ></div>
-      <button
-        id="adminCopyBtn"
-        style="
-          display: none;
-          width: 100%;
-          padding: 9px 0;
-          background: #FAF7F2;
-          color: #B8943A;
-          border: 1.5px solid #B8943A;
-          border-radius: 8px;
-          font-family: 'Georgia', serif;
-          font-size: 14px;
-          cursor: pointer;
-          letter-spacing: 0.06em;
-        "
-      >Көчүрүү</button>
-    </div>
-
     <script>
       (function () {
-        var params = new URLSearchParams(window.location.search);
+        var params    = new URLSearchParams(window.location.search);
         var guestName = params.get('to');
-        var isAdmin = params.get('admin') === '1';
+        var isAdmin   = params.get('admin') === '1';
 
-        // 1. Персональное обращение — только textContent, никакого innerHTML
+        // 1. Персональное обращение в основном блоке — только textContent
         var greetingEl = document.getElementById('guestGreeting');
         if (greetingEl) {
-          if (guestName && guestName.trim()) {
-            greetingEl.textContent = 'Урматтуу ' + guestName.trim() + '!';
-          } else {
-            greetingEl.textContent = 'Урматтуу коноктор!';
-          }
+          greetingEl.textContent = (guestName && guestName.trim())
+            ? 'Урматтуу ' + guestName.trim() + '!'
+            : 'Урматтуу коноктор!';
         }
 
-        // 1b. Персональное обращение в стартовом popup
+        // 1b. Персональное обращение в стартовом popup — только textContent
         var introGreetingEl = document.getElementById('introGuestGreeting');
         if (introGreetingEl) {
           if (guestName && guestName.trim()) {
-            introGreetingEl.textContent = 'Урматтуу ' + guestName.trim() + '!';
+            introGreetingEl.textContent  = 'Урматтуу ' + guestName.trim() + '!';
             introGreetingEl.style.display = 'block';
           } else {
-            introGreetingEl.textContent = '';
+            introGreetingEl.textContent  = '';
             introGreetingEl.style.display = 'none';
           }
         }
 
-        // 2. Показать генератор только при ?admin=1
+        // 2. Режим ?admin=1: показать генератор, скрыть стартовый popup
         if (isAdmin) {
           var adminEl = document.getElementById('adminGenerator');
           if (adminEl) adminEl.style.display = 'block';
+
+          var welcomeModal = document.getElementById('welcome-modal');
+          if (welcomeModal) welcomeModal.style.display = 'none';
         }
 
         // 3. Логика генератора
-        var nameInput  = document.getElementById('adminNameInput');
-        var genBtn     = document.getElementById('adminGenerateBtn');
-        var resultBox  = document.getElementById('adminResultUrl');
-        var copyBtn    = document.getElementById('adminCopyBtn');
+        var nameInput   = document.getElementById('adminNameInput');
+        var genBtn      = document.getElementById('adminGenerateBtn');
+        var resultWrap  = document.getElementById('adminResultWrap');
+        var resultBox   = document.getElementById('adminResultUrl');
+        var copyBtn     = document.getElementById('adminCopyBtn');
+        var previewLink = document.getElementById('adminPreviewLink');
+
+        function buildUrl(name) {
+          var base = new URL(window.location.href);
+          base.search = '';
+          base.hash   = '';
+          base.searchParams.set('to', name);
+          return base.toString();
+        }
 
         if (genBtn) {
           genBtn.addEventListener('click', function () {
             var name = nameInput.value.trim();
             if (!name) return;
-            var base = window.location.origin + window.location.pathname;
-            var url  = base + '?to=' + encodeURIComponent(name);
-            resultBox.textContent = url;
-            resultBox.style.display = 'block';
-            copyBtn.style.display   = 'block';
+            var url = buildUrl(name);
+            resultBox.textContent    = url;
+            resultWrap.style.display = 'block';
+            if (previewLink) previewLink.href = url;
           });
           nameInput.addEventListener('keydown', function (e) {
             if (e.key === 'Enter') genBtn.click();
           });
         }
+
+        // Chips — вставить значение в input по клику
+        document.querySelectorAll('.admin-chip').forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            if (nameInput) {
+              nameInput.value = chip.getAttribute('data-name');
+              nameInput.focus();
+            }
+          });
+        });
 
         if (copyBtn) {
           copyBtn.addEventListener('click', function () {
@@ -2781,7 +2928,7 @@
             if (navigator.clipboard && navigator.clipboard.writeText) {
               navigator.clipboard.writeText(url).then(function () {
                 copyBtn.textContent = 'Көчүрүлдү ✓';
-                setTimeout(function () { copyBtn.textContent = 'Көчүрүү'; }, 2000);
+                setTimeout(function () { copyBtn.textContent = 'Шилтемени көчүрүү'; }, 2000);
               });
             } else {
               var ta = document.createElement('textarea');
@@ -2794,7 +2941,7 @@
               document.execCommand('copy');
               document.body.removeChild(ta);
               copyBtn.textContent = 'Көчүрүлдү ✓';
-              setTimeout(function () { copyBtn.textContent = 'Көчүрүү'; }, 2000);
+              setTimeout(function () { copyBtn.textContent = 'Шилтемени көчүрүү'; }, 2000);
             }
           });
         }
