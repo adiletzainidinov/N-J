@@ -1313,6 +1313,28 @@
         .admin-copy-button,
         .admin-preview-link { width: 100%; justify-content: center; text-align: center; }
       }
+
+      /* ---- Admin mode: show only the generator, hide everything else ---- */
+      body.admin-mode {
+        background: #f7f1e8 !important;
+        overflow: auto !important;
+      }
+      body.admin-mode .admin-generator {
+        min-height: 100vh;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 16px;
+      }
+      body.admin-mode #welcome-modal,
+      body.admin-mode header,
+      body.admin-mode .toggleAudio,
+      body.admin-mode #audio {
+        display: none !important;
+      }
+      body.admin-mode section:not(#adminGenerator) {
+        display: none !important;
+      }
     </style>
 
     <section id="adminGenerator" class="admin-generator">
@@ -2873,13 +2895,10 @@
           }
         }
 
-        // 2. Режим ?admin=1: показать генератор, скрыть стартовый popup
+        // 2. Режим ?admin=1: показать только генератор, скрыть весь сайт через CSS-класс
         if (isAdmin) {
-          var adminEl = document.getElementById('adminGenerator');
-          if (adminEl) adminEl.style.display = 'block';
-
-          var welcomeModal = document.getElementById('welcome-modal');
-          if (welcomeModal) welcomeModal.style.display = 'none';
+          document.body.classList.add('admin-mode');
+          document.body.style.overflow = 'auto'; // сбросить overflow:hidden от popup-скрипта
         }
 
         // 3. Логика генератора
