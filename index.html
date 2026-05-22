@@ -1329,8 +1329,17 @@
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: #8B5C28;
-          margin-bottom: 20px;
+          margin-bottom: 14px;
         ">Кымбаттуу конокторубуз</p>
+
+        <h3 id="guestGreeting" style="
+          font-family: 'Cormorant Garamond', 'Noto Serif Display', serif;
+          font-size: clamp(20px, 4vw, 30px);
+          font-weight: 400;
+          color: #B8943A;
+          letter-spacing: 0.04em;
+          margin-bottom: 20px;
+        ">Урматтуу коноктор!</h3>
 
         <h2 style="
           font-family: 'Cormorant Garamond', 'Noto Serif Display', serif;
@@ -2604,5 +2613,169 @@
       async
       data-wp-strategy="async"
     ></script>
+
+    <!-- ADMIN LINK GENERATOR (visible only with ?admin=1) -->
+    <div id="adminGenerator" style="
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      background: #FAF7F2;
+      border: 1.5px solid #B8943A;
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 8px 40px rgba(184,148,58,0.18), 0 2px 12px rgba(0,0,0,0.10);
+      max-width: 340px;
+      width: calc(100vw - 48px);
+      font-family: 'Georgia', serif;
+    ">
+      <p style="
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #B8943A;
+        margin: 0 0 10px;
+      ">✦ Генератор шилтемеси ✦</p>
+      <p style="font-size: 13px; color: #4a3520; margin: 0 0 14px; font-style: italic; line-height: 1.5;">
+        Конок атын жазыңыз — жеке шилтеме жаратылат
+      </p>
+      <input
+        id="adminNameInput"
+        type="text"
+        placeholder="Мисал: Азамат жана Айдана"
+        style="
+          width: 100%;
+          box-sizing: border-box;
+          padding: 10px 14px;
+          border: 1px solid #D4B97A;
+          border-radius: 8px;
+          font-family: 'Georgia', serif;
+          font-size: 15px;
+          color: #1F1810;
+          background: #FFFDF8;
+          margin-bottom: 12px;
+          outline: none;
+        "
+      />
+      <button
+        id="adminGenerateBtn"
+        style="
+          width: 100%;
+          padding: 10px 0;
+          background: linear-gradient(135deg, #B8943A 0%, #D4B97A 100%);
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          font-family: 'Georgia', serif;
+          font-size: 15px;
+          letter-spacing: 0.06em;
+          cursor: pointer;
+          margin-bottom: 14px;
+        "
+      >Шилтеме жарат</button>
+      <div
+        id="adminResultUrl"
+        style="
+          display: none;
+          word-break: break-all;
+          font-size: 12px;
+          color: #4a3520;
+          background: #F0E8D8;
+          border: 1px solid #D4B97A;
+          border-radius: 8px;
+          padding: 10px 14px;
+          margin-bottom: 10px;
+          font-family: monospace;
+          line-height: 1.6;
+        "
+      ></div>
+      <button
+        id="adminCopyBtn"
+        style="
+          display: none;
+          width: 100%;
+          padding: 9px 0;
+          background: #FAF7F2;
+          color: #B8943A;
+          border: 1.5px solid #B8943A;
+          border-radius: 8px;
+          font-family: 'Georgia', serif;
+          font-size: 14px;
+          cursor: pointer;
+          letter-spacing: 0.06em;
+        "
+      >Көчүрүү</button>
+    </div>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var guestName = params.get('to');
+        var isAdmin = params.get('admin') === '1';
+
+        // 1. Персональное обращение — только textContent, никакого innerHTML
+        var greetingEl = document.getElementById('guestGreeting');
+        if (greetingEl) {
+          if (guestName && guestName.trim()) {
+            greetingEl.textContent = 'Урматтуу ' + guestName.trim() + '!';
+          } else {
+            greetingEl.textContent = 'Урматтуу коноктор!';
+          }
+        }
+
+        // 2. Показать генератор только при ?admin=1
+        if (isAdmin) {
+          var adminEl = document.getElementById('adminGenerator');
+          if (adminEl) adminEl.style.display = 'block';
+        }
+
+        // 3. Логика генератора
+        var nameInput  = document.getElementById('adminNameInput');
+        var genBtn     = document.getElementById('adminGenerateBtn');
+        var resultBox  = document.getElementById('adminResultUrl');
+        var copyBtn    = document.getElementById('adminCopyBtn');
+
+        if (genBtn) {
+          genBtn.addEventListener('click', function () {
+            var name = nameInput.value.trim();
+            if (!name) return;
+            var base = window.location.origin + window.location.pathname;
+            var url  = base + '?to=' + encodeURIComponent(name);
+            resultBox.textContent = url;
+            resultBox.style.display = 'block';
+            copyBtn.style.display   = 'block';
+          });
+          nameInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') genBtn.click();
+          });
+        }
+
+        if (copyBtn) {
+          copyBtn.addEventListener('click', function () {
+            var url = resultBox.textContent;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(url).then(function () {
+                copyBtn.textContent = 'Көчүрүлдү ✓';
+                setTimeout(function () { copyBtn.textContent = 'Көчүрүү'; }, 2000);
+              });
+            } else {
+              var ta = document.createElement('textarea');
+              ta.value = url;
+              ta.style.position = 'fixed';
+              ta.style.opacity  = '0';
+              document.body.appendChild(ta);
+              ta.focus();
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              copyBtn.textContent = 'Көчүрүлдү ✓';
+              setTimeout(function () { copyBtn.textContent = 'Көчүрүү'; }, 2000);
+            }
+          });
+        }
+      })();
+    </script>
+
   </body>
 </html>
