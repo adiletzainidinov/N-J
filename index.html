@@ -835,12 +835,24 @@
         transform: translateY(-2px);
         box-shadow: 0 12px 32px rgba(184, 148, 58, 0.5);
       }
+      .intro-guest-greeting {
+        display: none;
+        margin: 0 0 18px;
+        font-family: 'Cormorant Garamond', 'Noto Serif Display', serif;
+        font-size: clamp(18px, 4.5vw, 24px);
+        font-weight: 500;
+        color: #B8943A;
+        letter-spacing: 0.04em;
+        text-align: center;
+        line-height: 1.3;
+      }
     </style>
 
     <div id="welcome-modal">
       <div class="welcome-card">
         <div class="welcome-bismillah">بِسْمِ اللَّهِ</div>
         <div class="welcome-ornament"></div>
+        <p id="introGuestGreeting" class="intro-guest-greeting"></p>
         <div class="welcome-title">Үйлөнүү тойго чакыруу</div>
         <div class="welcome-names">Нурлан<span> &amp; </span>Жумайым</div>
         <div class="welcome-date">2 июнь 2026 · 17:00</div>
@@ -2721,6 +2733,18 @@
             greetingEl.textContent = 'Урматтуу ' + guestName.trim() + '!';
           } else {
             greetingEl.textContent = 'Урматтуу коноктор!';
+          }
+        }
+
+        // 1b. Персональное обращение в стартовом popup
+        var introGreetingEl = document.getElementById('introGuestGreeting');
+        if (introGreetingEl) {
+          if (guestName && guestName.trim()) {
+            introGreetingEl.textContent = 'Урматтуу ' + guestName.trim() + '!';
+            introGreetingEl.style.display = 'block';
+          } else {
+            introGreetingEl.textContent = '';
+            introGreetingEl.style.display = 'none';
           }
         }
 
