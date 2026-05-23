@@ -672,24 +672,35 @@
       }
 
       .hero-parents {
-        margin: 12px auto 0;
+        margin: 14px auto 0;
         text-align: center;
         font-family: 'Cormorant Garamond', 'Georgia', serif;
-        font-size: 13px;
+        color: rgba(255, 255, 255, 0.82);
         line-height: 1.45;
-        color: rgba(255, 255, 255, 0.78);
         letter-spacing: 0.04em;
       }
       .hero-parents span {
         display: block;
       }
+      .hero-parents span:first-child {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.68);
+      }
+      .hero-parents span:nth-child(2) {
+        margin-top: 2px;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.88);
+        letter-spacing: 0.08em;
+        text-transform: lowercase;
+      }
       .hero-parents strong {
         display: block;
-        margin-top: 3px;
+        margin-top: 4px;
         color: #d4ae5a;
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 600;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.05em;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
       }
 
       /* ---- Date display gold accents ---- */
@@ -799,24 +810,33 @@
       }
 
       .parents-signature {
-        margin: 12px auto 0;
+        margin: 22px auto 0;
         text-align: center;
         font-family: 'Cormorant Garamond', 'Georgia', serif;
-        font-size: 13px;
-        line-height: 1.45;
-        color: rgba(74, 53, 32, 0.75);
+        color: rgba(74, 53, 32, 0.78);
+        line-height: 1.5;
         letter-spacing: 0.04em;
       }
       .parents-signature span {
         display: block;
       }
+      .parents-signature span:first-child {
+        font-size: 14px;
+        color: rgba(74, 53, 32, 0.68);
+      }
+      .parents-signature span:nth-child(2) {
+        margin-top: 2px;
+        font-size: 16px;
+        color: rgba(74, 53, 32, 0.86);
+        letter-spacing: 0.08em;
+      }
       .parents-signature strong {
         display: block;
-        margin-top: 3px;
+        margin-top: 4px;
         color: #b8943a;
-        font-size: 15px;
+        font-size: 20px;
         font-weight: 600;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.05em;
       }
 
       /* ---- Mobile improvements ---- */
@@ -1902,7 +1922,26 @@
       #rsvp-kg .stepper { padding: 10px; }
       #rsvp-kg .countText { font-size: 17px; }
     }
-  </style>
+  
+      @media (max-width: 540px) {
+        .hero-parents {
+          margin-top: 10px;
+          line-height: 1.35;
+        }
+        .hero-parents span:first-child {
+          font-size: 12px;
+        }
+        .hero-parents span:nth-child(2) {
+          font-size: 13px;
+        }
+        .hero-parents strong {
+          font-size: 15px;
+        }
+        .parents-signature strong {
+          font-size: 18px;
+        }
+      }
+    </style>
 
   <div class="wrap">
     <h2 class="title">Келериңизди тастыктап коюңуз</h2>
