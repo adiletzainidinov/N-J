@@ -777,14 +777,6 @@
         height: 4px;
         background: linear-gradient(90deg, #B8943A, #D4AE5A, #B8943A);
       }
-      .welcome-bismillah {
-        font-family: 'Georgia', serif;
-        font-size: 22px;
-        color: #B8943A;
-        margin-bottom: 16px;
-        letter-spacing: 0.05em;
-        opacity: 0.9;
-      }
       .welcome-ornament {
         width: 60px;
         height: 1px;
@@ -850,7 +842,6 @@
 
     <div id="welcome-modal">
       <div class="welcome-card">
-        <div class="welcome-bismillah">بِسْمِ اللَّهِ</div>
         <div class="welcome-ornament"></div>
         <p id="introGuestGreeting" class="intro-guest-greeting"></p>
         <div class="welcome-title">Үйлөнүү тойго чакыруу</div>
@@ -900,6 +891,23 @@
       .banner-title p {
         font-family: 'Cormorant Garamond', 'WindSong', cursive !important;
         letter-spacing: 0.08em;
+      }
+
+      .hero-parents {
+        text-align: center;
+        margin: 14px 0 0;
+        font-family: 'Cormorant Garamond', 'Georgia', serif;
+        font-size: 13px;
+        color: rgba(255,255,255,0.72);
+        letter-spacing: 0.05em;
+        line-height: 1.7;
+      }
+      .hero-parents strong {
+        display: block;
+        font-size: 15px;
+        color: #D4AE5A;
+        font-weight: 600;
+        letter-spacing: 0.07em;
       }
 
       /* ---- Date display gold accents ---- */
@@ -962,37 +970,6 @@
       }
 
 
-      /* ---- Timeline body: beautiful ---- */
-      .timeline-body .story-date {
-        color: var(--gold-light) !important;
-        font-size: 12px !important;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        font-family: 'Georgia', serif !important;
-      }
-
-      .timeline-body .title {
-        font-family: 'Cormorant Garamond', 'Noto Serif Display', serif !important;
-        font-size: 22px !important;
-        color: #fff !important;
-      }
-
-      .timeline-body .timeline-des {
-        font-size: 14px;
-        line-height: 1.7;
-        color: rgba(255,255,255,0.8) !important;
-        font-family: 'Georgia', serif;
-        font-style: italic;
-      }
-
-      .timeline-media {
-        background-color: var(--gold) !important;
-      }
-
-      /* ---- Timeline intro text ---- */
-      #time-line p[style*="font-style:italic"] {
-        max-width: 580px;
-      }
 
       /* ---- Album section ---- */
       /* album section removed */
@@ -1039,6 +1016,23 @@
         margin: 0 auto;
       }
 
+      .parents-signature {
+        text-align: center;
+        margin: 20px auto 0;
+        font-family: 'Cormorant Garamond', 'Georgia', serif;
+        font-size: 14px;
+        color: rgba(255,255,255,0.75);
+        letter-spacing: 0.04em;
+        line-height: 1.7;
+      }
+      .parents-signature strong {
+        display: block;
+        font-size: 16px;
+        color: #D4AE5A;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+      }
+
       /* ---- Mobile improvements ---- */
       @media (max-width: 540px) {
         .banner-container {
@@ -1050,23 +1044,6 @@
           font-size: clamp(36px, 10vw, 52px) !important;
         }
 
-        .timeline-item {
-          grid-template-columns: 1fr !important;
-          gap: 16px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-media {
-          order: 0 !important;
-        }
-
-        .timeline-list::before {
-          display: none;
-        }
-
-        .timeline-media img {
-          max-height: 200px;
-          width: 100% !important;
-        }
 
         #about {
           margin-top: 48px;
@@ -1404,7 +1381,6 @@
         <div class="container">
           <div class="banner-container" >
             <div class="banner-title">
-              <p style="font-family:'Georgia',serif; letter-spacing:0.12em; font-size:13px; text-transform:uppercase; opacity:0.85;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
               <p>Сизди үйлөнүү тоюбузга чакырабыз</p>
             </div>
 
@@ -1428,12 +1404,18 @@
               <span class="banner_year"> 2026 </span>
 
               <div class="group-add">
-                <p>Ресторан «Элина»</p>
+                <p>Ресторан «Элина гранд»</p>
 
                 <span class="banner_location_adress">
-                  Жалал-Абад облусу
+                  Жалал-Абад облусу<br>
+                  Ноокен району
                 </span>
               </div>
+
+              <p class="hero-parents">
+                Сиздерди урматтоо менен<br>
+                <strong>Абдыманап жана Замира</strong>
+              </p>
             </div>
 
             <div class="social-link">
@@ -1738,14 +1720,15 @@
               <img
                 src="wp-content/pic/restaurant.jpg"
                 data-src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=640&q=80&auto=format&fit=crop"
-                alt="Ресторан Элина"
+                alt="Ресторан Элина гранд"
                 class="lazyload"
               />
 
-              <h3 class="card-title uk-margin-remove">Ресторан «Элина»</h3>
+              <h3 class="card-title uk-margin-remove">Ресторан «Элина гранд»</h3>
 
               <address class="uk-margin-remove">
                 <p>Жалал-Абад облусу</p>
+                <p>Ноокен району</p>
               </address>
 
               <div class="invitation-body">
@@ -1768,6 +1751,11 @@
                   </div>
 
                   <p class="invi_amlich">Сизди үйлөнүү тоюбузга урматтоо менен чакырабыз</p>
+
+                  <p class="parents-signature">
+                    Сиздерди урматтоо менен<br>
+                    <strong>Абдыманап жана Замира</strong>
+                  </p>
                 </div>
               </div>
 
@@ -1842,136 +1830,6 @@
 
 
 
-    <!-- TIMELINE -->
-    <section
-      id="time-line"
-      class="time-line-section img_bg bg_overlay lazyload"
-      data-bg="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=75&auto=format&fit=crop"
-      style="background-image: none"
-    >
-      <div class="time-line container">
-        <div class="section-heading">
-          <p class="subtitle" style="font-family:'Georgia',serif; letter-spacing:0.12em; color:rgba(255,255,255,0.75); font-size:13px;">— биздин тарыхыбыз —</p>
-          <h2 class="section-title">Биздин сүйүү жолубуз</h2>
-          <p style="text-align:center; max-width:540px; margin: 16px auto 0; color:rgba(255,255,255,0.82); font-size:15px; line-height:1.75; font-family:'Georgia',serif; font-style:italic;">
-            Алардын тарыхы жөнөкөй таанышуудан башталды. Убакыт өтүп, Ала-Арчадагы таза аба, «Мубарак» кафесиндеги ширин маектер жана биргеликте кинодо өткөн кечелер алардын жүрөктөрүнө жол тартты. Ошол нурлуу учурлардан сүйүү өскөнүн алар өздөрү да сезбей калды. Бүгүн Нурлан менен Жумайым, Жаратканга шүгүр айтып, ата-энелеринин батасын алып, жаңы жашоону биргеликте баштоого чечим кылышты.
-          </p>
-        </div>
-
-        <div class="timeline-list">
-          <div
-            class="timeline-item"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="timeline-media">
-              <img
-                data-src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=480&q=80&auto=format&fit=crop"
-                alt="Таанышуу"
-                class="timline-img lazyload"
-              />
-            </div>
-
-            <div class="timeline-body">
-              <span class="story-date">Таанышуу</span>
-              <span class="title">Биринчи жолугушуу</span>
-              <p class="timeline-des uk-margin-remove">
-                Алардын жолу биринчи жолу кесилишти — жөнөкөй, бирок ошол учурдан баштап жүрөктөрдө орун алган таанышуу.
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="timeline-media">
-              <img
-                data-src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=480&q=80&auto=format&fit=crop"
-                alt="Ала-Арча"
-                class="timline-img lazyload"
-              />
-            </div>
-
-            <div class="timeline-body">
-              <span class="story-date">Ала-Арча</span>
-              <span class="title">Тоодогу серп</span>
-              <p class="timeline-des uk-margin-remove">
-                Бийик тоолордун арасында, Ала-Арчанын таза абасында биринчи жолу бирге серп урушту. Тоолор аларды угуп, шамал аларга жыргал тиледи.
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="timeline-media">
-              <img
-                data-src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=480&q=80&auto=format&fit=crop"
-                alt="Кафе Мубарак"
-                class="timline-img lazyload"
-              />
-            </div>
-
-            <div class="timeline-body">
-              <span class="story-date">«Мубарак»</span>
-              <span class="title">Ширин маектер</span>
-              <p class="timeline-des uk-margin-remove">
-                «Мубарак» кафесиндеги жылуу кечелер, ачык сүйлөшүүлөр — бул жерде алар бири-биринин жүрөгүнө жол тапты.
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="timeline-media">
-              <img
-                data-src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=480&q=80&auto=format&fit=crop"
-                alt="Кино"
-                class="timline-img lazyload"
-              />
-            </div>
-
-            <div class="timeline-body">
-              <span class="story-date">Кино</span>
-              <span class="title">Биргеликтеги кечелер</span>
-              <p class="timeline-des uk-margin-remove">
-                Кино экранда жүрдү, бирок алардын маанайы сыртта — ошол кечелер эскерүүгө айланып калды.
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="timeline-item"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div class="timeline-media">
-              <img
-                data-src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=480&q=80&auto=format&fit=crop"
-                alt="Чечим"
-                class="timline-img lazyload"
-              />
-            </div>
-
-            <div class="timeline-body">
-              <span class="story-date">2026</span>
-              <span class="title">Жаңы жашоо</span>
-              <p class="timeline-des uk-margin-remove">
-                Ата-энелердин батасы менен жана Жаратканга шүгүр айтып, алар бирге жашоону тандашты.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END TIMELINE -->
 
     <!-- ALBUM SECTION REMOVED -->
 
