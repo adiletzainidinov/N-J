@@ -5,6 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Performance: preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <!-- Preload hero background image -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1600&q=75&auto=format&fit=crop" fetchpriority="high" />
+
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="//unpkg.com" />
     <link
@@ -13,221 +21,12 @@
       title="Нурлан &amp; Жумайым &raquo;"
     />
 
-    <script>
-      window._wpemojiSettings = {
-        baseUrl: 'https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/',
-        ext: '.png',
-        svgUrl: 'https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/',
-        svgExt: '.svg',
-        source: {
-          concatemoji:
-            'https:\/\/thiepdientu.com.vn\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.5.4',
-        },
-      };
-      !(function (i, n) {
-        var o, s, e;
-        function c(e) {
-          try {
-            var t = { supportTests: e, timestamp: new Date().valueOf() };
-            sessionStorage.setItem(o, JSON.stringify(t));
-          } catch (e) {}
-        }
-        function p(e, t, n) {
-          e.clearRect(0, 0, e.canvas.width, e.canvas.height),
-            e.fillText(t, 0, 0);
-          var t = new Uint32Array(
-              e.getImageData(0, 0, e.canvas.width, e.canvas.height).data
-            ),
-            r =
-              (e.clearRect(0, 0, e.canvas.width, e.canvas.height),
-              e.fillText(n, 0, 0),
-              new Uint32Array(
-                e.getImageData(0, 0, e.canvas.width, e.canvas.height).data
-              ));
-          return t.every(function (e, t) {
-            return e === r[t];
-          });
-        }
-        function u(e, t, n) {
-          switch (t) {
-            case 'flag':
-              return n(
-                e,
-                '\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f',
-                '\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f'
-              )
-                ? !1
-                : !n(
-                    e,
-                    '\ud83c\uddfa\ud83c\uddf3',
-                    '\ud83c\uddfa\u200b\ud83c\uddf3'
-                  ) &&
-                    !n(
-                      e,
-                      '\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f',
-                      '\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f'
-                    );
-            case 'emoji':
-              return !n(
-                e,
-                '\ud83d\udc26\u200d\u2b1b',
-                '\ud83d\udc26\u200b\u2b1b'
-              );
-          }
-          return !1;
-        }
-        function f(e, t, n) {
-          var r =
-              'undefined' != typeof WorkerGlobalScope &&
-              self instanceof WorkerGlobalScope
-                ? new OffscreenCanvas(300, 150)
-                : i.createElement('canvas'),
-            a = r.getContext('2d', { willReadFrequently: !0 }),
-            o = ((a.textBaseline = 'top'), (a.font = '600 32px Arial'), {});
-          return (
-            e.forEach(function (e) {
-              o[e] = t(a, e, n);
-            }),
-            o
-          );
-        }
-        function t(e) {
-          var t = i.createElement('script');
-          (t.src = e), (t.defer = !0), i.head.appendChild(t);
-        }
-        'undefined' != typeof Promise &&
-          ((o = 'wpEmojiSettingsSupports'),
-          (s = ['flag', 'emoji']),
-          (n.supports = { everything: !0, everythingExceptFlag: !0 }),
-          (e = new Promise(function (e) {
-            i.addEventListener('DOMContentLoaded', e, { once: !0 });
-          })),
-          new Promise(function (t) {
-            var n = (function () {
-              try {
-                var e = JSON.parse(sessionStorage.getItem(o));
-                if (
-                  'object' == typeof e &&
-                  'number' == typeof e.timestamp &&
-                  new Date().valueOf() < e.timestamp + 604800 &&
-                  'object' == typeof e.supportTests
-                )
-                  return e.supportTests;
-              } catch (e) {}
-              return null;
-            })();
-            if (!n) {
-              if (
-                'undefined' != typeof Worker &&
-                'undefined' != typeof OffscreenCanvas &&
-                'undefined' != typeof URL &&
-                URL.createObjectURL &&
-                'undefined' != typeof Blob
-              )
-                try {
-                  var e =
-                      'postMessage(' +
-                      f.toString() +
-                      '(' +
-                      [JSON.stringify(s), u.toString(), p.toString()].join(
-                        ','
-                      ) +
-                      '));',
-                    r = new Blob([e], { type: 'text/javascript' }),
-                    a = new Worker(URL.createObjectURL(r), {
-                      name: 'wpTestEmojiSupports',
-                    });
-                  return void (a.onmessage = function (e) {
-                    c((n = e.data)), a.terminate(), t(n);
-                  });
-                } catch (e) {}
-              c((n = f(s, u, p)));
-            }
-            t(n);
-          })
-            .then(function (e) {
-              for (var t in e)
-                (n.supports[t] = e[t]),
-                  (n.supports.everything =
-                    n.supports.everything && n.supports[t]),
-                  'flag' !== t &&
-                    (n.supports.everythingExceptFlag =
-                      n.supports.everythingExceptFlag && n.supports[t]);
-              (n.supports.everythingExceptFlag =
-                n.supports.everythingExceptFlag && !n.supports.flag),
-                (n.DOMReady = !1),
-                (n.readyCallback = function () {
-                  n.DOMReady = !0;
-                });
-            })
-            .then(function () {
-              return e;
-            })
-            .then(function () {
-              var e;
-              n.supports.everything ||
-                (n.readyCallback(),
-                (e = n.source || {}).concatemoji
-                  ? t(e.concatemoji)
-                  : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji)));
-            }));
-      })((window, document), window._wpemojiSettings);
-    </script>
 
-    <style id="wp-emoji-styles-inline-css">
-      img.wp-smiley,
-      img.emoji {
-        display: inline !important;
-        border: none !important;
-        box-shadow: none !important;
-        height: 1em !important;
-        width: 1em !important;
-        margin: 0 0.07em !important;
-        vertical-align: -0.1em !important;
-        background: none !important;
-        padding: 0 !important;
-      }
-    </style>
 
     <link
       rel="stylesheet"
-      id="wp-block-library-css"
-      href="wp-includes/css/style.min380f.css"
-      media="all"
-    />
 
-    <style id="rank-math-toc-block-style-inline-css">
-      .wp-block-rank-math-toc-block nav ol {
-        counter-reset: item;
-      }
 
-      .wp-block-rank-math-toc-block nav ol li {
-        display: block;
-      }
-
-      .wp-block-rank-math-toc-block nav ol li:before {
-        content: counters(item, '.') '. ';
-        counter-increment: item;
-      }
-    </style>
-
-    <style id="classic-theme-styles-inline-css">
-      .wp-block-button__link {
-        color: #fff;
-        background-color: #32373c;
-        border-radius: 9999px;
-        box-shadow: none;
-        text-decoration: none;
-        padding: calc(0.667em + 2px) calc(1.333em + 2px);
-        font-size: 1.125em;
-      }
-
-      .wp-block-file__button {
-        background: #32373c;
-        color: #fff;
-        text-decoration: none;
-      }
-    </style>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"
@@ -670,12 +469,7 @@
       href="wp-content/themes/css/reset-wedding8a54.css"
       media="all"
     />
-    <link
-      rel="stylesheet"
-      id="fancybox-css"
-      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?ver=1.0.0"
-      media="all"
-    />
+    <!-- fancybox removed -->
     <!-- swiper removed: album section deleted -->
     <link
       rel="stylesheet"
@@ -707,23 +501,6 @@
       href="wp-content/themes/css/theme8a54.css"
       media="all"
     />
-
-    <script
-      src="wp-includes/js/jquery/jquery.minf43b.js"
-      id="jquery-core-js"
-    ></script>
-
-    <script
-      src="wp-includes/js/jquery/jquery-migrate.min5589.js"
-      id="jquery-migrate-js"
-    ></script>
-
-    <script
-      src="wp-content/themes/js/jquery.min8a54.js"
-      id="Jquery-js"
-    ></script>
-
-    <link rel="https://api.w.org/" href="https://thiepdientu.com.vn/wp-json/" />
 
     <meta name="generator" content="" />
 
@@ -1372,10 +1149,13 @@
     <header>
       <section id="banner" class="bg_overlay" style="height: 850px">
         <img
-          data-src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=80&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1600&q=75&auto=format&fit=crop"
           alt="Горы Кыргызстана"
-          class="banner-bg img_bg banner_top lazyload"
+          class="banner-bg img_bg banner_top"
           style="background-position: center center"
+          fetchpriority="high"
+          decoding="async"
+          loading="eager"
         />
 
         <div class="container">
@@ -1526,11 +1306,15 @@
 
           <div class="about-card" style="order: 2">
             <div class="about-media">
-              <img
-                data-src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=640&q=80&auto=format&fit=crop"
-                alt="Нурлан"
-                class="groom_img lazyload"
-              />
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&q=75&auto=format&fit=crop"
+                  data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&q=75&auto=format&fit=crop"
+                  alt="Нурлан"
+                  class="groom_img lazyload"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=640&q=80&auto=format&fit=crop';"
+                />
             </div>
 
             <div class="about-body" data-aos="fade-up" data-aos-duration="3000">
@@ -1717,12 +1501,15 @@
           <div class="invitation-container">
             <div class="invitation-card">
               <!-- РЕСТОРАН: замените src на фото ресторана "Элина" -->
-              <img
-                src="wp-content/pic/restaurant.jpg"
-                data-src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=640&q=80&auto=format&fit=crop"
-                alt="Ресторан Элина гранд"
-                class="lazyload"
-              />
+                <img
+                  src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=640&q=75&auto=format&fit=crop"
+                  data-src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=640&q=75&auto=format&fit=crop"
+                  alt="Ресторан Элина гранд"
+                  class="lazyload"
+                  loading="lazy"
+                  decoding="async"
+                  onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=640&q=80&auto=format&fit=crop';"
+                />
 
               <h3 class="card-title uk-margin-remove">Ресторан «Элина гранд»</h3>
 
@@ -2298,10 +2085,13 @@
       <div class="uk-overlay uk-overlay-primary uk-position-cover"></div>
 
       <img
-        data-src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&q=80&auto=format&fit=crop"
+        src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=75&auto=format&fit=crop"
+        data-src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&q=75&auto=format&fit=crop"
         alt="Горы Кыргызстана"
         class="thankyou-bg lazyload"
         style="object-position: center"
+        loading="lazy"
+        decoding="async"
       />
 
       <div
@@ -2331,7 +2121,7 @@
     <audio
       id="audio"
       src="wp-content/audio/wedding-calm.mp3"
-      preload="auto"
+      preload="none"
       loop
     ></audio>
 
@@ -2677,67 +2467,24 @@
         }
       });
 
-      const resources = [
-        // Unsplash wedding & Kyrgyz images
-        'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=80&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1548199949-76df5e1b785d?w=1600&q=80&auto=format&fit=crop',
-        // Local assets
-        'wp-content/pic/restaurant.jpg',
-        // Additional Unsplash images
-        'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=600&q=80&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&q=80&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&q=80&auto=format&fit=crop',
-      ];
-
-      function loadResourceSequentially(index = 0) {
-        if (index >= resources.length) return;
-
-        const link = document.createElement('link');
-
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = resources[index];
-
-        link.onload = () => loadResourceSequentially(index + 1);
-        link.onerror = () => loadResourceSequentially(index + 1);
-
-        document.head.appendChild(link);
-      }
-
-      loadResourceSequentially();
 
       document.cookie = 'username=John Doe; SameSite=Lax; Secure';
     </script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?ver=1.0.0"
-      id="fancybox js-js"
-    ></script>
-    <script
+    <!-- fancybox js removed -->
+    <script defer
       src="wp-content/themes/js/uikit.min8a54.js"
       id="uikit js-js"
     ></script>
-    <script
+    <script defer
       src="wp-content/themes/js/uikit-icons.min8a54.js"
       id="uikit icon-js"
     ></script>
-    <script src="wp-content/themes/js/aos8a54.js" id="aos js-js"></script>
+    <script defer src="wp-content/themes/js/aos8a54.js" id="aos js-js"></script>
     <!-- swiper-js removed: album section deleted -->
-    <script
-      src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js?ver=1.0.0"
-      id="scrollrevea-js"
-    ></script>
-    <script
+    <!-- scrollreveal removed -->
+    <script defer
       src="wp-content/themes/js/main-wedding8a54.js"
       id="main wedding-js"
-    ></script>
-    <script
-      src="wp-includes/js/comment-reply.min380f.js"
-      id="comment-reply-js"
-      async
-      data-wp-strategy="async"
     ></script>
 
     <script>
